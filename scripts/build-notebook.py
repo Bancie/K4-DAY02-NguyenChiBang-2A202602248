@@ -341,7 +341,9 @@ học; dẫn quy tắc, sửa trong CVAT nếu cần, rồi mô tả trước v�
     ),
     code(
         "validate-and-package",
-        '''# 7 — Kiểm tra và tạo ZIP nộp bài. Không đưa gói xuất thô hoặc trọng số mô hình vào gói nộp.
+        '''# 7 — Kiểm tra và tạo ZIP chuyển tệp cho kho GitHub cá nhân.
+# ZIP này chỉ giúp tải tệp từ Colab về máy, không phải bài nộp trên VLearn.
+# Không đưa gói xuất thô, bộ nhãn đối chiếu hoặc trọng số mô hình vào kho cá nhân.
 required_outputs = {
     "IMAGE_ATTRIBUTION.md", "input_pool_audit.json", "my_export_audit.json",
     "my_native_export_audit.json", "training_run.json", "detect_result.jpg",
@@ -358,7 +360,7 @@ for path in (REPORT_PATH, GUIDELINE_PATH):
     if "CHƯA ĐIỀN" in text:
         raise ValueError(f"{path.name} còn placeholder; mở file và điền trước khi chạy lại.")
 
-staging = Path("day2_submission_staging")
+staging = Path("day2_repository_staging")
 if staging.exists():
     shutil.rmtree(staging)
 (staging / OUTPUT_DIR.name).mkdir(parents=True)
@@ -372,15 +374,18 @@ if not re.fullmatch(r"[A-Za-z]+(?:-[A-Za-z]+)+", student_name):
     raise ValueError("Họ tên phải không dấu và có dấu gạch ngang, ví dụ Nguyen-Van-An.")
 if not re.fullmatch(r"[A-Za-z0-9_-]{4,24}", student_id):
     raise ValueError("MSSV chỉ dùng chữ, số, dấu gạch ngang hoặc gạch dưới; độ dài từ 4 đến 24 ký tự.")
-submission = Path(f"KX-DAY02-{student_name}-{student_id}.zip")
-with zipfile.ZipFile(submission, "w", compression=zipfile.ZIP_DEFLATED) as archive:
+repository_name = f"KX-DAY02-{student_name}-{student_id}"
+transfer_archive = Path(f"{repository_name}-repo-files.zip")
+with zipfile.ZipFile(transfer_archive, "w", compression=zipfile.ZIP_DEFLATED) as archive:
     for path in sorted(staging.rglob("*")):
         if path.is_file():
             archive.write(path, path.relative_to(staging))
-roots = {Path(name).parts[0] for name in zipfile.ZipFile(submission).namelist()}
+roots = {Path(name).parts[0] for name in zipfile.ZipFile(transfer_archive).namelist()}
 assert roots == {"REPORT.md", "GUIDELINE_MINI_SHEET.md", "day2_lab_outputs"}
-assert zipfile.ZipFile(submission).testzip() is None
-print("ĐẠT kiểm tra gói nộp:", submission.resolve())
+assert zipfile.ZipFile(transfer_archive).testzip() is None
+print("ĐẠT kiểm tra tệp cho kho cá nhân:", repository_name)
+print("Tải gói chuyển tệp về máy:", transfer_archive.resolve())
+print("Giải nén, đưa ba mục ở cấp đầu lên kho GitHub cá nhân, rồi nộp đường dẫn kho trên VLearn.")
 ''',
     ),
 ]

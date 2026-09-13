@@ -279,7 +279,22 @@ class RepositoryContractTest(unittest.TestCase):
             self.assertIn(filename, readme)
             self.assertIn(filename, self.code_source)
         self.assertIn('roots == {"REPORT.md", "GUIDELINE_MINI_SHEET.md", "day2_lab_outputs"}', self.code_source)
-        self.assertIn("Không đưa gói xuất thô hoặc trọng số mô hình", self.code_source)
+        self.assertIn("Không đưa gói xuất thô", self.code_source)
+        self.assertIn("bộ nhãn đối chiếu", self.code_source)
+        self.assertIn("trọng số mô hình", self.code_source)
+
+    def test_each_student_submits_a_personal_github_repository_url(self):
+        readme = (ROOT / "README.md").read_text(encoding="utf-8")
+        guide = (ROOT / "GUIDE.md").read_text(encoding="utf-8")
+        learner_contract = "\n".join((readme, guide, self.markdown_source, self.code_source))
+        self.assertIn("KX-DAY02-HoVaTen-MSSV", readme)
+        self.assertIn("kho GitHub cá nhân", learner_contract)
+        self.assertIn("nộp đường dẫn kho trên VLearn", learner_contract)
+        self.assertIn('repository_name = f"KX-DAY02-{student_name}-{student_id}"', self.code_source)
+        self.assertIn('transfer_archive = Path(f"{repository_name}-repo-files.zip")', self.code_source)
+        self.assertIn("ZIP này chỉ giúp tải tệp từ Colab về máy, không phải bài nộp trên VLearn", self.code_source)
+        self.assertNotIn("ZIP bài nộp", learner_contract)
+        self.assertNotIn("ZIP nộp bài", learner_contract)
 
     def test_html_uses_four_real_cvat_screenshots(self):
         guide = (ROOT / "docs" / "day2-e2e-guide.html").read_text(encoding="utf-8")

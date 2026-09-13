@@ -71,7 +71,7 @@ CHƯA ĐIỀN
 
 CHƯA ĐIỀN
 
-## 7. Kiểm tra bài nộp
+## 7. Kiểm tra kho GitHub cá nhân
 
 - [ ] Có phiếu quy tắc với ba tình huống mơ hồ.
 - [ ] Có kết quả kiểm hai gói xuất.

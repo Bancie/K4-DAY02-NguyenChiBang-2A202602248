@@ -117,14 +117,17 @@ không chứng minh mô hình dùng được trong thực tế.
 
 IoU không phải ngưỡng đạt. Hai người có thể đồng thuận nhưng vẫn cùng sai.
 
-## 205–240 phút — sửa, báo cáo và đóng gói
+## 205–240 phút — sửa, báo cáo và tạo kho GitHub cá nhân
 
 1. Chọn một điểm khác biệt thuộc phạm vi, lớp, hình học hoặc thuộc tính.
 2. Nêu minh chứng quan sát được và quy tắc áp dụng.
 3. Nếu cần, sửa trong CVAT rồi xuất lại; không sửa trực tiếp tệp nhãn.
 4. Ghi rõ trước khi sửa và sau khi sửa trong `REPORT.md`.
 5. Hoàn thành `GUIDELINE_MINI_SHEET.md`.
-6. Chạy ô lệnh cuối để kiểm tra và tạo ZIP bài nộp.
+6. Chạy ô lệnh cuối để kiểm tra và tạo ZIP chuyển tệp từ Colab về máy. ZIP này không phải bài nộp.
+7. Tạo một kho GitHub cá nhân tên `KX-DAY02-HoVaTen-MSSV`. Không dùng chung kho với bạn cùng cặp và không sao chép toàn bộ kho bài mẫu.
+8. Giải nén ZIP chuyển tệp. Trên GitHub, chọn **Add file (Thêm tệp) → Upload files (Tải tệp lên)**, rồi đưa trực tiếp `REPORT.md`, `GUIDELINE_MINI_SHEET.md` và thư mục `day2_lab_outputs/` vào cấp đầu của kho.
+9. Chọn **Commit changes (Ghi nhận thay đổi)**, mở lại kho và kiểm đủ ba mục. Nộp đường dẫn kho trên VLearn. Chế độ hiển thị và tài khoản cần cấp quyền làm theo thông báo trên lớp.
 
 ## Xử lý sự cố nhanh
 
@@ -150,8 +153,8 @@ gốc giữ các thuộc tính đó.
 **Vì sao chỉ có bốn ảnh?** Bộ ảnh nhỏ giúp hoàn thành trọn đường ống trong lớp. Kết quả huấn luyện trên bốn ảnh
 không phải phép đánh giá mô hình dùng trong thực tế.
 
-## Phần mở rộng tự chọn sau khi đã đóng gói bài
+## Phần mở rộng tự chọn sau khi đã hoàn thành kho cá nhân
 
 Chọn một cặp hộp có IoU thấp hoặc một vật thể không ghép được. Dựa trên ảnh, phiếu quy tắc và hai bản xuất để
 giải thích nguyên nhân. Sau đó đề xuất đúng một câu sửa cho quy tắc nhằm giúp người tiếp theo ra quyết định nhất
-quán hơn. Không gán thêm ảnh, không sửa trực tiếp tệp nhãn và không thay đổi bài nộp cốt lõi.
+quán hơn. Không gán thêm ảnh, không sửa trực tiếp tệp nhãn và không thay đổi bộ minh chứng cốt lõi.

@@ -67,7 +67,7 @@ Mức đồng thuận giữa hai người cho biết quy tắc có dễ tái l�
 | 180–205 | Đối chiếu với bạn cùng cặp hoặc bộ tham chiếu | IoU (mức giao trên hợp), mức đồng thuận lớp và vật thể không ghép được |
 | 205–225 | Sửa một quyết định dựa trên minh chứng | ghi lại trước và sau khi sửa |
 | 225–235 | Hoàn thiện báo cáo | đủ tệp bắt buộc |
-| 235–240 | Kiểm tra và đóng gói | ZIP bài nộp hợp lệ |
+| 235–240 | Kiểm tra và đưa minh chứng lên kho GitHub cá nhân | đường dẫn kho mở được và đủ tệp |
 
 ## Bắt đầu
 
@@ -75,7 +75,7 @@ Mức đồng thuận giữa hai người cho biết quy tắc có dễ tái l�
 2. Tải trực tiếp [data/day2-cvat-input.zip](data/day2-cvat-input.zip).
 3. Làm theo [GUIDE.md](GUIDE.md) để tạo dự án CVAT, gán nhãn và xuất hai gói dữ liệu.
 4. Sau khi có hai gói xuất, mở sổ thực hành theo mục ngay bên dưới và chạy lần lượt từng ô lệnh.
-5. Hoàn thành `REPORT.md` và `GUIDELINE_MINI_SHEET.md`, sau đó tạo ZIP bài nộp.
+5. Hoàn thành `REPORT.md` và `GUIDELINE_MINI_SHEET.md`, đưa các tệp đã kiểm tra lên kho GitHub cá nhân rồi nộp đường dẫn kho trên VLearn.
 
 ### Mở sổ tay trên Google Colab khi repo đang riêng tư
 
@@ -86,9 +86,17 @@ Mức đồng thuận giữa hai người cho biết quy tắc có dễ tái l�
 
 Không chọn thẻ **GitHub** trong Colab cho repo này; yêu cầu đó sẽ bị tổ chức từ chối với mã lỗi 403.
 
-## Bài nộp
+## Bài nộp: kho GitHub cá nhân
 
-Khi mở ZIP bài nộp, bạn phải thấy trực tiếp:
+Mỗi học viên tạo một kho GitHub mới, không dùng chung kho với bạn cùng cặp và đặt tên:
+
+```text
+KX-DAY02-HoVaTen-MSSV
+```
+
+Ví dụ: `K4-DAY02-Nguyen-Van-An-20231234`. Chế độ hiển thị của kho và tài khoản cần cấp quyền được thực hiện theo thông báo trên lớp. Không sao chép toàn bộ kho bài mẫu vào kho cá nhân.
+
+Ở cấp đầu của kho cá nhân phải có trực tiếp:
 
 ```text
 REPORT.md
@@ -105,9 +113,9 @@ day2_lab_outputs/
 └── comparison_overlay.png
 ```
 
-Tên tệp được giữ bằng tiếng Anh để sổ thực hành có thể kiểm tra tự động. Nội dung báo cáo viết bằng tiếng Việt.
+Tên tệp được giữ bằng tiếng Anh để sổ thực hành có thể kiểm tra tự động. Nội dung báo cáo viết bằng tiếng Việt. Ô cuối của sổ thực hành tạo một ZIP chuyển tệp từ Colab về máy; ZIP này không phải bài nộp. Giải nén gói đó, đưa đúng ba mục ở trên vào kho cá nhân, rồi nộp đường dẫn kho trên VLearn.
 
-Không đưa vào bài nộp hoặc kho mã: gói xuất thô, bộ nhãn tham chiếu, trọng số mô hình, mật khẩu, mã truy cập, dữ
+Không đưa vào kho cá nhân: gói xuất thô, bộ nhãn tham chiếu, trọng số mô hình, mật khẩu, mã truy cập, dữ
 liệu cá nhân hoặc dữ liệu nội bộ.
 
 ## Tài liệu chính
@@ -124,7 +132,7 @@ liệu cá nhân hoặc dữ liệu nội bộ.
   tiên, sau khi nạp đủ bốn ảnh và sau mỗi lần xuất dữ liệu.
 - Mọi học viên vẫn làm cùng bốn ảnh, cùng lớp, cùng thuộc tính và cùng bộ minh chứng. Hỗ trợ không thay đổi yêu
   cầu cốt lõi.
-- Sau khi hoàn thành gói nộp, người muốn tìm hiểu thêm có thể chọn một trường hợp ghép hộp kém, giải thích nguyên
+- Sau khi hoàn thành kho cá nhân, người muốn tìm hiểu thêm có thể chọn một trường hợp ghép hộp kém, giải thích nguyên
   nhân và đề xuất một câu quy tắc rõ hơn. Đây là phần mở rộng tự chọn, không yêu cầu gán thêm ảnh hoặc thêm hộp.
 
 ## Tài liệu kỹ thuật tham khảo
@@ -137,4 +145,4 @@ liệu cá nhân hoặc dữ liệu nội bộ.
 ## Bài tập về nhà tự chọn
 
 Bộ ảnh có các lớp người đi bộ, người đi xe đạp, ô tô con và xe tải sẽ được thông báo riêng nếu được phát hành.
-Không dùng bộ đó trong dự án hoặc bài nộp của bài thực hành trên lớp này.
+Không dùng bộ đó trong dự án hoặc kho cá nhân của bài thực hành trên lớp này.
