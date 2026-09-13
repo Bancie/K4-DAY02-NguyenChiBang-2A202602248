@@ -124,6 +124,13 @@ class RepositoryContractTest(unittest.TestCase):
         self.assertIn("không tạo hoặc tải ảnh", verify_source)
         self.assertLess(self.cell_ids.index("cvat-independent-work"), self.cell_ids.index("install-pinned-dependencies"))
 
+    def test_private_repository_uses_colab_upload_instead_of_github_import(self):
+        readme = (ROOT / "README.md").read_text(encoding="utf-8")
+        self.assertNotIn("colab.research.google.com/github/", readme)
+        self.assertIn("notebooks/day2-detection-quality.ipynb", readme)
+        self.assertIn("Upload notebook (Tải sổ tay lên)", readme)
+        self.assertIn("repo đang ở chế độ riêng tư", readme)
+
     def test_student_repository_excludes_internal_material(self):
         forbidden_paths = (
             "instructor",

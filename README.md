@@ -1,8 +1,10 @@
 # Ngày 2 — Dữ liệu cho bài toán phát hiện vật thể
 
-[![Mở sổ thực hành trên Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/VinUni-AI20k/Day2-TrackData-ObjectDetection-Student/blob/main/notebooks/day2-detection-quality.ipynb)
-
 **Đối tượng:** học viên Giai đoạn 1. **Trạng thái:** tài liệu học viên đang dùng thử trong lớp. **Phạm vi:** Ngày 2.
+
+> **Lưu ý về Google Colab:** repo đang ở chế độ riêng tư và tổ chức chặn ứng dụng OAuth chưa được phê duyệt.
+> Vì vậy, không mở sổ tay bằng liên kết nhập trực tiếp từ GitHub; hãy tải tệp xuống rồi đưa lên Colab theo hướng
+> dẫn bên dưới.
 
 Đây là kho mã dành cho học viên. Trong bốn giờ, bạn sẽ gán nhãn bốn ảnh giao thông bằng CVAT, xuất dữ liệu theo
 định dạng YOLO (định dạng nhãn phát hiện vật thể), huấn luyện thử một bộ phát hiện vật thể bằng Ultralytics
@@ -72,8 +74,17 @@ Mức đồng thuận giữa hai người cho biết quy tắc có dễ tái l�
 1. Cài và kiểm tra CVAT theo [CVAT_SETUP.md](CVAT_SETUP.md) trước giờ học.
 2. Tải trực tiếp [data/day2-cvat-input.zip](data/day2-cvat-input.zip).
 3. Làm theo [GUIDE.md](GUIDE.md) để tạo dự án CVAT, gán nhãn và xuất hai gói dữ liệu.
-4. Sau khi có hai gói xuất, mở sổ thực hành bằng nút Google Colab ở đầu trang và chạy lần lượt từng ô lệnh.
+4. Sau khi có hai gói xuất, mở sổ thực hành theo mục ngay bên dưới và chạy lần lượt từng ô lệnh.
 5. Hoàn thành `REPORT.md` và `GUIDELINE_MINI_SHEET.md`, sau đó tạo ZIP bài nộp.
+
+### Mở sổ tay trên Google Colab khi repo đang riêng tư
+
+1. Mở tệp [notebooks/day2-detection-quality.ipynb](notebooks/day2-detection-quality.ipynb) trên GitHub.
+2. Chọn **Download raw file (Tải tệp gốc xuống)** để lưu tệp `.ipynb` về máy.
+3. Mở [Google Colab](https://colab.research.google.com/).
+4. Chọn **File (Tệp) → Upload notebook (Tải sổ tay lên)**, rồi chọn tệp vừa tải.
+
+Không chọn thẻ **GitHub** trong Colab cho repo này; yêu cầu đó sẽ bị tổ chức từ chối với mã lỗi 403.
 
 ## Bài nộp
 
