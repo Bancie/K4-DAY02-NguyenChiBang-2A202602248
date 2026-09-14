@@ -3,8 +3,8 @@ __pycache__/
 .DS_Store
 .ipynb_checkpoints/
 day2_lab_outputs/
-!/day2_lab_outputs/
-!/day2_lab_outputs/**
+!/reports/day2_lab_outputs/
+!/reports/day2_lab_outputs/**
 day2_submission_staging/
 *.zip
 *.zip.pending
