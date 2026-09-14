@@ -1,9 +1,9 @@
 # Phiếu quy tắc gán nhãn — Ngày 2
 
-**Họ và tên:** CHƯA ĐIỀN<br>
-**MSSV:** CHƯA ĐIỀN<br>
-**Hình thức:** CHƯA ĐIỀN — cá nhân hoặc theo cặp<br>
-**Mã cặp:** CHƯA ĐIỀN — ghi `SOLO` nếu làm cá nhân
+**Họ và tên:** NGUYỄN CHÍ BẰNG<br>
+**MSSV:** 2A202602248<br>
+**Hình thức:** cá nhân<br>
+**Mã cặp:** SOLO
 
 ## 1. Phạm vi
 
@@ -46,37 +46,39 @@ Hoàn thành trước khi xem bài của người khác hoặc bộ nhãn tham c
 
 ### Tình huống A — xe buýt hay xe van?
 
-- Ảnh và mã vật thể: CHƯA ĐIỀN
-- Dấu hiệu nhìn thấy: CHƯA ĐIỀN
-- Quy tắc áp dụng: CHƯA ĐIỀN
-- Quyết định: CHƯA ĐIỀN
-- Nếu vẫn thiếu bằng chứng, bạn sẽ làm gì? CHƯA ĐIỀN
+- Ảnh và mã vật thể: `drive_022`, xe vàng–trắng lớn phía trước (hộp YOLO dòng 1, lớp `bus`; khoảng tâm 0.384, 0.724)
+- Dấu hiệu nhìn thấy: thân khách dài, khớp nối hai khoang, nhiều cửa sổ dọc thân, mặt đầu xe buýt rõ
+- Quy tắc áp dụng: thân xe khách dài, nhiều cửa sổ hoặc hàng ghế → `bus`; không gán `van` cho thân xe buýt
+- Quyết định: `bus`
+- Nếu vẫn thiếu bằng chứng, bạn sẽ làm gì? Phóng 100%, so với van hộp nhỏ trên cùng ảnh; nếu vẫn không chắc thì `review_state=needs_review` và hỏi Lab Coach, không đoán theo kích thước hộp
 
 ### Tình huống B — xe tải hay xe van/ô tô con?
 
-- Ảnh và mã vật thể: CHƯA ĐIỀN
-- Dấu hiệu nhìn thấy: CHƯA ĐIỀN
-- Quy tắc áp dụng: CHƯA ĐIỀN
-- Quyết định: CHƯA ĐIỀN
-- Nếu vẫn thiếu bằng chứng, bạn sẽ làm gì? CHƯA ĐIỀN
+- Ảnh và mã vật thể: `drive_038`, xe cứu hộ trắng chữ 公安 (hộp YOLO dòng 1, lớp `truck`; khoảng tâm 0.597, 0.659)
+- Dấu hiệu nhìn thấy: cabin tách sàn, cần cẩu / thiết bị kéo phía sau, không phải thân hộp kín một khối
+- Quy tắc áp dụng: thùng, ben, sàn hàng hoặc thiết bị công vụ rõ → `truck`; van kín một khối không vào lớp này
+- Quyết định: `truck`
+- Nếu vẫn thiếu bằng chứng, bạn sẽ làm gì? So với van đỏ thân hộp gần xe tải phủ bạt trên cùng ảnh (`van`); nếu thiết bị công vụ không rõ thì `needs_review`, không gán `car` chỉ vì cabin giống ô tô con
 
 ### Tình huống C — bị che, bị mép ảnh cắt hay không đủ bằng chứng?
 
-- Ảnh và mã vật thể: CHƯA ĐIỀN
-- Dấu hiệu nhìn thấy khi phóng 100%: CHƯA ĐIỀN
-- Giá trị `visibility`: CHƯA ĐIỀN
-- Giá trị `boundary`: CHƯA ĐIỀN
-- Trạng thái `review_state`: CHƯA ĐIỀN
-- Lý do: CHƯA ĐIỀN
+- Ảnh và mã vật thể: `drive_008`, mảnh xe sát mép phải–dưới (hộp `car`, xtl≈620, ytl≈566, xbr=640, ybr=640)
+- Dấu hiệu nhìn thấy khi phóng 100%: chỉ còn một góc thân tối, không thấy cabin, bánh hay kiểu dáng đủ để chắc lớp
+- Giá trị `visibility`: `unclear`
+- Giá trị `boundary`: `truncated`
+- Trạng thái `review_state`: `needs_review`
+- Lý do: mép ảnh cắt gần hết vật thể; bằng chứng phân lớp không đủ. Giữ hộp và đánh `needs_review` chứ không đoán `car`/`truck`. Cụm xe < khoảng 15 px trên `drive_033` xử lý cùng cách.
 
 ## 6. Xác nhận tự kiểm tra
 
-- [ ] Đã rà đủ bốn ảnh.
-- [ ] Đã kiểm vật thể thiếu và trùng.
-- [ ] Đã kiểm lớp và hình học từng hộp.
-- [ ] Mỗi hộp có đủ ba thuộc tính.
-- [ ] Đã xử lý mọi hộp `needs_review`.
-- [ ] Đã hoàn thành ba tình huống trước khi xem nguồn đối chiếu.
+- [x] Đã rà đủ bốn ảnh.
+- [x] Đã kiểm vật thể thiếu và trùng.
+- [x] Đã kiểm lớp và hình học từng hộp.
+- [x] Mỗi hộp có đủ ba thuộc tính.
+- [x] Đã xử lý mọi hộp `needs_review`.
+- [x] Đã hoàn thành ba tình huống trước khi xem nguồn đối chiếu.
 - [ ] Nếu làm theo cặp, hai người đã xuất bài độc lập trước khi trao đổi.
-- [ ] Nếu làm cá nhân, bài riêng đã được kiểm trước khi nhận bộ tham chiếu.
-- [ ] Số vật thể thực tế: CHƯA ĐIỀN — 40–60 là mục tiêu khối lượng, không phải điểm cắt.
+- [x] Nếu làm cá nhân, bài riêng đã được kiểm trước khi nhận bộ tham chiếu.
+- [x] Số vật thể thực tế: 105 — 40–60 là mục tiêu khối lượng, không phải điểm cắt.
+
+Đã xem 19 hộp `needs_review` còn lại (`drive_008` 4, `drive_033` 9, `drive_038` 6): giữ cờ và không đoán lớp. Không gán người, xe máy, xe đạp.

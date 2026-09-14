@@ -63,9 +63,9 @@ Cùng lớp `bus` trên `drive_008`: xe buýt vàng lớn có `visibility=clear`
 
 - Ba mã ảnh huấn luyện: `drive_022`, `drive_033`, `drive_038`
 - Mã ảnh thẩm định: `drive_008`
-- Mô tả một dự đoán trong `detect_result.jpg`: chưa chạy ô 4 của sổ thực hành nên chưa có `detect_result.jpg`. Ảnh thẩm định đông xe (`drive_008`, 29 hộp) nên mô hình 8 epoch trên 3 ảnh rất dễ bỏ sót xe nhỏ hoặc nhầm `truck`/`bus`/`van`.
-- Dự đoán đó gợi ý cần kiểm lại quy tắc hoặc dữ liệu nào? Cần rà lại phạm vi (có nên giữ 105 hộp hay chỉ xe đủ bằng chứng) và ranh giới `truck`/`van`/`bus` — đây là chỗ lớp dễ lệch giữa hai nguồn nhãn.
-- Minh chứng nào có thể bác bỏ nhận định của bạn? Ảnh dự đoán thật sau khi chạy ô 4; hoặc đối chiếu hộp mô hình với hộp CVAT trên cùng `drive_008`. Một dự đoán đúng lớp/hộp sát phần nhìn thấy sẽ bác bỏ nhận định “mô hình chắc chắn rối trên ảnh này”.
+- Mô tả một dự đoán trong `detect_result.jpg`: YOLO11n, Ultralytics 8.4.145, 8 epoch (dừng sớm sau epoch 4, seed 42, CPU). Trên `drive_008` với `conf=0.25` **không có hộp nào**. Ảnh vẫn là toàn cảnh vòng xuyến: sedan trắng, van, xe ben, xe buýt vàng đều không được mô hình khoanh.
+- Dự đoán đó gợi ý cần kiểm lại quy tắc hoặc dữ liệu nào? Ba ảnh train không đủ để mô hình “học” 105 hộp (nhiều xe rất nhỏ). Cần thu hẹp phạm vi về xe đủ bằng chứng và kiểm lại ranh giới `truck`/`van`/`bus` — val mAP gần 0 (car/truck/bus = 0).
+- Minh chứng nào có thể bác bỏ nhận định của bạn? Một lần chạy khác (hạ `conf`, tắt early stop, hoặc bỏ hộp `unclear`) nếu ra hộp sát sedan trắng hoặc xe buýt vàng trên cùng `drive_008` sẽ bác bỏ nhận định “mô hình không thấy vật thể nào trên ảnh này”.
 - Vì sao kết quả trên bốn ảnh không phải phép đánh giá mô hình dùng thực tế?
 
 Bốn ảnh nhỏ, có thể liên quan thời gian, chia 3/1 chỉ để kiểm đường ống. mAP hay ảnh dự đoán không chấm người gán nhãn và không chứng minh mô hình dùng được ngoài lab (thiếu tập test độc lập, đa điều kiện, đủ khối lượng).
@@ -87,14 +87,14 @@ IoU chỉ đo hai hộp chồng khít. Hai người có thể cùng vẽ sát c�
 
 ## 7. Kiểm tra kho GitHub cá nhân
 
-- [ ] Có phiếu quy tắc với ba tình huống mơ hồ.
-- [ ] Có kết quả kiểm hai gói xuất.
-- [ ] Có thông tin lần huấn luyện và ảnh dự đoán.
-- [ ] Có tóm tắt, bảng và ảnh phủ của bước đối chiếu.
+- [x] Có phiếu quy tắc với ba tình huống mơ hồ.
+- [x] Có kết quả kiểm hai gói xuất.
+- [x] Có thông tin lần huấn luyện và ảnh dự đoán.
+- [x] Có tóm tắt, bảng và ảnh phủ của bước đối chiếu.
 - [x] Không có gói xuất thô, bộ nhãn tham chiếu hoặc trọng số mô hình.
 - [x] Không có dữ liệu VinFast/khách hàng/ảnh cá nhân/mật khẩu/mã truy cập.
 
-Hai ô cuối là cam kết khi nộp kho `KX-DAY02-...`: không tải `reports/my-export`, XML CVAT, `day2-teaching-reference.zip` hay `*.pt` lên GitHub. Các ô trên còn trống vì chưa chạy hết sổ thực hành (`day2_lab_outputs/`) và chưa điền `guideline-mini-sheet.md`.
+Kho nộp chỉ chứa `REPORT.md`, `GUIDELINE_MINI_SHEET.md` và `day2_lab_outputs/` (đủ 9 tệp). Không có ZIP xuất thô, bộ tham chiếu hay `*.pt`.
 
 Minh chứng mạnh nhất trong bài và câu hỏi còn lại cho Lab Coach:
 
